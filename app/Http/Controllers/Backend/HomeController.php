@@ -10,11 +10,8 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $user = Auth::user();
-
         return view('back.pages.index', [
             "page" => "dashboard",
-            "user" => $user
         ]);
     }
 }

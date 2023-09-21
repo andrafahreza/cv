@@ -12,21 +12,21 @@
             <ul id="iq-sidebar-toggle" class="iq-menu">
                 <li>
                     <div class="d-flex align-items-center">
-                        <a href="{{ route('home') }}" class="collapsed @if ($page == 'dashboard') active @endif" data-toggle="collapse" aria-expanded="false">
+                        <a href="{{ route('home') }}" class="@if ($page == 'dashboard') active @endif">
                             <i class="las la-home iq-arrow-left"></i><span>Dashboard</span>
                         </a>
-                        <a href="#" class="collapsed" data-toggle="collapse" aria-expanded="true">
-                            <i class="las la-graduation-cap"></i><span>Pendidikan</span>
+                        <a href="#" class="@if ($page == 'education') active @endif">
+                            <i class="las la-graduation-cap"></i><span>Education</span>
                         </a>
                     </div>
                 </li>
                 <li>
                     <div class="d-flex align-items-center">
-                        <a href="#" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                            <i class="las la-briefcase"></i><span>Portofolio</span>
+                        <a href="#" class="@if ($page == 'portfolio') active @endif">
+                            <i class="las la-briefcase"></i><span>Portfolio</span>
                         </a>
-                        <a href="#" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                            <i class="las la-envelope"></i><span>Pesan</span>
+                        <a href="#" class="@if ($page == 'message') active @endif">
+                            <i class="las la-envelope"></i><span>Message</span>
                         </a>
                     </div>
                 </li>
@@ -82,8 +82,8 @@
                                                         src="{{ asset('back/assets/images/user/01.jpg') }}" alt="">
                                                 </div>
                                                 <div class="media-body ml-3">
-                                                    <h6 class="mb-0">Emma Watson Barry <small
-                                                            class="badge badge-success float-right">New</small>
+                                                    <h6 class="mb-0">
+                                                        Emma Watson Barry <small class="badge badge-success float-right">New</small>
                                                     </h6>
                                                     <p class="mb-0">95 MB</p>
                                                 </div>
@@ -140,7 +140,7 @@
                     <li class="nav-item iq-full-screen"><a href="#" class="" id="btnFullscreen"><i class="ri-fullscreen-line"></i></a></li>
                     <li class="caption-content">
                         <a href="#" class="iq-user-toggle">
-                            <img src="{{ asset('back/assets/images/user/1.jpg') }}" class="img-fluid rounded" alt="user">
+                            <img src="{{ asset(Auth::user()->photo == null ? "back/assets/images/user/07.jpg" : Auth::user()->photo) }}" class="img-fluid rounded" alt="user">
                         </a>
                         <div class="iq-user-dropdown">
                             <div class="card">
@@ -157,17 +157,15 @@
                                     <div class="card-body">
                                         <div class="profile-header">
                                             <div class="cover-container text-center">
-                                                <img src="{{ asset('back/assets/images/user/1.jpg') }}" alt="profile-bg"
-                                                    class="rounded img-fluid avatar-80">
+                                                <img src="{{ asset(Auth::user()->photo == null ? "back/assets/images/user/07.jpg" : Auth::user()->photo) }}" alt="profile-bg" class="rounded img-fluid avatar-80">
                                                 <div class="profile-detail mt-3">
-                                                    <h3>{{ $user->name }}</h3>
-                                                    <p class="mb-1">Web designer</p>
+                                                    <h3>{{ Auth::user()->name }}</h3>
+                                                    <p class="mb-1">{{ Auth::user()->job }}</p>
                                                 </div>
                                                 <a href="{{ route('logout') }}" class="btn btn-primary">Sign Out</a>
                                             </div>
                                             <div class="profile-details my-4">
-                                                <a href="../app/user-account-setting.html"
-                                                    class="iq-sub-card bg-success-light rounded-small p-2">
+                                                <a href="{{ route('profile') }}" class="iq-sub-card bg-success-light rounded-small p-2">
                                                     <div class="media align-items-center">
                                                         <div class="rounded iq-card-icon-small">
                                                             <i class="ri-account-box-line"></i>
@@ -188,7 +186,7 @@
                                                         <h6>Birthday</h6>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="mb-0">3rd March</p>
+                                                        <p class="mb-0">{{ Auth::user()->birthday }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row align-items-center mb-2">
@@ -196,7 +194,7 @@
                                                         <h6>Address</h6>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="mb-0">Landon</p>
+                                                        <p class="mb-0">{{ Auth::user()->address }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row align-items-center mb-2">
@@ -204,7 +202,7 @@
                                                         <h6>Phone</h6>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="mb-0">(010)987 543 201</p>
+                                                        <p class="mb-0">{{ Auth::user()->phone }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row align-items-center mb-2">
@@ -212,15 +210,7 @@
                                                         <h6>Email</h6>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="mb-0">Barry@example.com</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row align-items-center mb-2">
-                                                    <div class="col-sm-6">
-                                                        <h6>Twitter</h6>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <p class="mb-0">@Barry</p>
+                                                        <p class="mb-0">{{ Auth::user()->email }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row align-items-center mb-2">
@@ -228,7 +218,19 @@
                                                         <h6>Facebook</h6>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="mb-0">@Barry_Tech</p>
+                                                        <p class="mb-0">
+                                                            <a href="{{ Auth::user()->facebook }}" target="_blank"></a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row align-items-center mb-2">
+                                                    <div class="col-sm-6">
+                                                        <h6>Linkedin</h6>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p class="mb-0">
+                                                            <a href="{{ Auth::user()->linkedin }}" target="_blank"></a>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>

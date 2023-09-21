@@ -1074,7 +1074,7 @@
     <script src='{{ asset('front/js/owl.carousel.min.js') }}'></script>
     <script src="{{ asset('front/js/jquery.magnific-popup.min.js') }}"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrDf32aQTCVENBhFJbMBKOUTiUAABtC2o"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu1GRqaYw_NmXmAnPyDsEOs2fdh5zYiPw&callback=Function.prototype"></script>
     <script src="{{ asset('front/js/jquery.googlemap.js') }}"></script>
     <script src="{{ asset('front/js/validator.js') }}"></script>
     <script src="{{ asset('front/js/main.js') }}"></script>

@@ -75,19 +75,15 @@
     <script src="{{ asset('back/assets/js/table-treeview.js') }}"></script>
     <script src="{{ asset('back/assets/js/masonry.pkgd.min.js') }}"></script>
     <script src="{{ asset('back/assets/js/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('back/assets/js/mapbox-gl.js') }}"></script>
-    <script src="{{ asset('back/assets/js/mapbox.js') }}"></script>
     <script src='{{ asset('back/assets/vendor/fullcalendar/core/main.js') }}'></script>
     <script src='{{ asset('back/assets/vendor/fullcalendar/daygrid/main.js') }}'></script>
     <script src='{{ asset('back/assets/vendor/fullcalendar/timegrid/main.js') }}'></script>
     <script src='{{ asset('back/assets/vendor/fullcalendar/list/main.js') }}'></script>
     <script src="{{ asset('back/assets/js/sweetalert.js') }}"></script>
-    <script src="{{ asset('back/assets/js/vector-map-custom.js') }}"></script>
     <script src="{{ asset('back/assets/js/customizer.js') }}"></script>
     <script src="{{ asset('back/assets/js/chart-custom.js') }}"></script>
     <script src="{{ asset('back/assets/js/slider.js') }}"></script>
     <script src="{{ asset('back/assets/js/app.js') }}"></script>
-    <script src="{{ asset('back/assets/js/sweetalert.js') }}"></script>
 
     @if (session()->has('alert'))
         @php

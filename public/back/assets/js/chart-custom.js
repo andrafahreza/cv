@@ -14,7 +14,7 @@ function apexChartUpdate(chart, detail) {
       }
     })
   }
-  
+
 // for am chart
 function amChartUpdate(chart, detail) {
   // let color = getComputedStyle(document.documentElement).getPropertyValue('--dark');
@@ -4946,7 +4946,7 @@ if (jQuery("#report-chart-02").length) {
   document.addEventListener('ChangeColorMode', function (e) {
     apexChartUpdate(chart, e.detail)
   })
-    
+
 }
 if (jQuery("#report-chart-04").length) {
     var options = {
@@ -6560,7 +6560,7 @@ if (jQuery("#ecommerce-chart-01").length) {
     series: [{
       name: 'Net Profit',
       data: [5, 15, 25, 35, 45, 55, 45, 35, 25, 15, 5]
-     
+
     }, {
       name: 'Revenue',
       data: [10, 20, 30, 40, 50, 60, 50, 40, 30, 20, 10]
@@ -7467,7 +7467,7 @@ $(function() {
         alert('Selected rating: ' + value);
     }
     });
-  } 
+  }
   if (typeof $.fn.mdbRate !== typeof undefined) {
     $('#rateMe1').mdbRate();
     $('#face-rating').mdbRate();
@@ -7670,25 +7670,25 @@ if(typeof $.fn.magnificPopup !== typeof undefined){
 
   // gallary masanarry
 
-    var $grid = $('.masonry').masonry({
-         itemSelector: '.item',
-        columnWidth: '.grid-sizer',
-        percentPosition: true
-    });
-    $grid.imagesLoaded().progress(function () {
-        $grid.masonry('layout');
-    });
-    if(typeof $.fn.magnificPopup !== typeof undefined){
-      $('.gallery').magnificPopup({
-            delegate: 'a',
-            type: 'image',
-            gallery: {
-              enabled: true,
-              navigateByImgClick: true,
-              preload: [0, 1]
-            }
-      });
-    }
+    // var $grid = $('.masonry').masonry({
+    //      itemSelector: '.item',
+    //     columnWidth: '.grid-sizer',
+    //     percentPosition: true
+    // });
+    // $grid.imagesLoaded().progress(function () {
+    //     $grid.masonry('layout');
+    // });
+    // if(typeof $.fn.magnificPopup !== typeof undefined){
+    //   $('.gallery').magnificPopup({
+    //         delegate: 'a',
+    //         type: 'image',
+    //         gallery: {
+    //           enabled: true,
+    //           navigateByImgClick: true,
+    //           preload: [0, 1]
+    //         }
+    //   });
+    // }
 
 /*---------------------------------------------------------------------
    App Reporting
@@ -9437,13 +9437,13 @@ if (jQuery("#reporting-chart-16").length) {
         }
       },
       responsive: [{
-        breakpoint: 380,        
+        breakpoint: 380,
         options: {
           chart: {
             height: 280
           },
           legend: {
-            show: false            
+            show: false
           }
         }
       }]
@@ -10072,7 +10072,7 @@ if (jQuery("#social-chart-01").length) {
       categories: ['Facebook', 'Instagram', 'Twitter', 'Linkedin'],
     },
     yaxis: {
-      
+
     },
     fill: {
       opacity: 1
@@ -10664,7 +10664,7 @@ if (jQuery("#ecommerce2-chart-03").length) {
         top: 1
       }
     },
-    
+
     stroke: {
       width: 2
     },
@@ -11101,7 +11101,7 @@ if (jQuery("#fit-progress-chart-01").length) {
       align: 'left'
     },
     grid: {
-      
+
       row: {
         colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
         opacity: 0
@@ -11173,7 +11173,7 @@ if (jQuery("#fit-progress-chart-02").length) {
         }
       }
     },
-    
+
     responsive: [{
       breakpoint: 480,
       options: {
@@ -11181,7 +11181,7 @@ if (jQuery("#fit-progress-chart-02").length) {
           position: 'bottom',
           offsetX: -10,
           offsetY: 0,
-         
+
         }
       }
     }],
@@ -11274,7 +11274,7 @@ if (jQuery("#fit-progress-chart-03").length) {
     },
     yaxis: {
       title: {
-        
+
       },
       labels: {
         offsetY: 0,
@@ -11368,7 +11368,7 @@ if (jQuery("#property-chart-1").length) {
         }
       }
     },
-    
+
     responsive: [{
       breakpoint: 578,
       options: {
@@ -11380,7 +11380,7 @@ if (jQuery("#property-chart-1").length) {
         }
       }
     }]
- 
+
   };
   const chart = new ApexCharts(document.querySelector("#property-chart-1"), options);
   chart.render();
@@ -12739,7 +12739,7 @@ if (jQuery('#salon2-chart-10').length) {
            labels: {
              formatter: function(val) {
                return parseFloat(val).toFixed(1)
-             }          
+             }
            }
          },
          yaxis: {
@@ -12885,7 +12885,7 @@ to: value
            element: 'salon2-chart-08',
            resize: true,
            colors: ["#876cfe","#fe721c"],
-           data: [             
+           data: [
              {label: "Female", value: 30},
              {label: "Male", value: 20}
 
@@ -13547,7 +13547,7 @@ if (jQuery("#hospital2-chart-04").length) {
         }
       }
     },
-    responsive: [{      
+    responsive: [{
       breakpoint: 992,
       options: {
         chart: {
@@ -13797,7 +13797,7 @@ if (jQuery("#property2-chart-01").length) {
     offsetY: -25,
     offsetX: -5
   },
-  
+
     responsive: [{
     breakpoint: 678,
     options: {
@@ -14213,7 +14213,7 @@ if (jQuery('#hotel-chart-2').length) {
     document.addEventListener('ChangeColorMode', function (e) {
       amChartUpdate(chart, e.detail)
     })
- 
+
   });
 }
 if (jQuery('#hotel-payment-01').length) {
@@ -14521,7 +14521,7 @@ if (jQuery('#hotel-chart-6').length) {
     ],
     hideHover: 'auto'
   });
-  
+
 }
 
 if (jQuery("#rating-chart").length && am4core.ready(function () {
@@ -14705,7 +14705,7 @@ if(jQuery('#property3-chart-01').length){
    }
   }
   };
-  
+
   var chart = new ApexCharts(document.querySelector("#property3-chart-01"), options);
   chart.render();
     const body = document.querySelector('body')
@@ -14714,7 +14714,7 @@ if(jQuery('#property3-chart-01').length){
         dark: true
       })
     }
-  
+
     document.addEventListener('ChangeColorMode', function (e) {
       apexChartUpdate(chart, e.detail)
     })
@@ -14758,7 +14758,7 @@ if(jQuery('#property3-chart-01').length){
      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     }
     };
-    
+
     var chart = new ApexCharts(document.querySelector("#property3-chart-02"), options);
     chart.render();
       const body = document.querySelector('body')
@@ -14767,7 +14767,7 @@ if(jQuery('#property3-chart-01').length){
           dark: true
         })
       }
-    
+
       document.addEventListener('ChangeColorMode', function (e) {
         apexChartUpdate(chart, e.detail)
       })
@@ -14852,7 +14852,7 @@ if (jQuery("#property3-chart-03").length) {
     offsetY: -25,
     offsetX: -5
   },
-  
+
     responsive: [{
     breakpoint: 678,
     options: {
