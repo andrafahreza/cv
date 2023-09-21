@@ -18,5 +18,8 @@ Route::middleware(['auth'])->group(function () {
     Route::group(["prefix" => "profile"], function () {
         Route::get('/', [ProfileController::class, 'profile'])->name('profile');
         Route::post('/', [ProfileController::class, 'save_profile'])->name('save_profile');
+
+        Route::get('change-pass', function() { return abort(404); });
+        Route::post('change-pass', [ProfileController::class, 'change_pass'])->name('change-pass');
     });
 });

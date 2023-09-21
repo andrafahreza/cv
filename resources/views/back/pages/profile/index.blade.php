@@ -180,16 +180,15 @@
                             <form>
                                 <div class="form-group">
                                     <label for="cpass">Current Password:</label>
-                                    <a href="javascripe:void();" class="float-right">Forgot Password</a>
-                                    <input type="Password" class="form-control" id="cpass" value="">
+                                    <input type="Password" name="current_password" class="form-control" id="cpass" value="">
                                 </div>
                                 <div class="form-group">
                                     <label for="npass">New Password:</label>
-                                    <input type="Password" class="form-control" id="npass" value="">
+                                    <input type="Password" name="new_password" class="form-control" id="npass" value="">
                                 </div>
                                 <div class="form-group">
                                     <label for="vpass">Verify Password:</label>
-                                    <input type="Password" class="form-control" id="vpass" value="">
+                                    <input type="Password" name="retype" class="form-control" id="vpass" value="">
                                 </div>
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                 <button type="reset" class="btn iq-bg-danger">Cancel</button>
