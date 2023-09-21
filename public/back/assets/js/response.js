@@ -3,7 +3,7 @@ function getresponse(icon, message, title) {
         icon: icon,
         title: title,
         text: message,
-        timer: 2e3,
+        timer: 5e3,
         timerProgressBar: !0,
         showCloseButton: !0,
         didOpen: function () {

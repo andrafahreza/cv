@@ -35,18 +35,18 @@
             <div class="card-body p-0">
                 <div class="iq-edit-list usr-edit">
                     <ul class="iq-edit-profile d-flex nav nav-pills">
-                        <li class="col-md-3 p-0">
+                        <li class="col-md-4 p-0">
                             <a class="nav-link active" data-toggle="pill" href="#personal-information">
                                 Personal Information
                             </a>
                         </li>
-                        <li class="col-md-3 p-0">
+                        <li class="col-md-4 p-0">
                             <a class="nav-link" data-toggle="pill" href="#chang-pwd">
                                 Change Password
                             </a>
                         </li>
-                        <li class="col-md-3 p-0">
-                            <a class="nav-link" data-toggle="pill" href="#emailandsms">
+                        <li class="col-md-4 p-0">
+                            <a class="nav-link" data-toggle="pill" href="#curriculum">
                                 Curriculum Vitae
                             </a>
                         </li>
@@ -152,13 +152,13 @@
                                     </div>
                                     <div class="form-group col-sm-12">
                                         <label>Location</label>
-                                        <input type="hidden" name="lat" id="inputLat">
-                                        <input type="hidden" name="lng" id="inputLng">
+                                        <input type="hidden" name="lat" id="inputLat" value="{{ Auth::user()->lat }}">
+                                        <input type="hidden" name="lng" id="inputLng" value="{{ Auth::user()->lng }}">
                                         <div id="map-container">
                                             <div class="gmap_canvas" id="gmap_canvas" style="height: 400px;"></div>
                                             <div id="search-container">
                                                 <input type="text" class="form-control" id="search-input"
-                                                    placeholder="Cari Alamat Klinik">
+                                                    placeholder="Find Location">
                                             </div>
                                         </div>
                                     </div>
@@ -177,7 +177,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="{{ route('change-pass') }}" method="POST" id="formChangePass">
+                                @csrf
                                 <div class="form-group">
                                     <label for="cpass">Current Password:</label>
                                     <input type="Password" name="current_password" class="form-control" id="cpass" value="">
@@ -196,83 +197,43 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="emailandsms" role="tabpanel">
+                <div class="tab-pane fade" id="curriculum" role="tabpanel">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">Email and SMS</h4>
+                                <h4 class="card-title">Curriculum Vitae</h4>
                             </div>
                         </div>
                         <div class="card-body">
-                            <form>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="emailnotification">Email Notification:</label>
-                                    <div class="col-md-9 custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="emailnotification"
-                                            checked="">
-                                        <label class="custom-control-label" for="emailnotification"></label>
-                                    </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="smsnotification">SMS Notification:</label>
-                                    <div class="col-md-9 custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="smsnotification"
-                                            checked="">
-                                        <label class="custom-control-label" for="smsnotification"></label>
-                                    </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="npass">When To Email</label>
-                                    <div class="col-md-9">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="email01">
-                                            <label class="custom-control-label" for="email01">You have new
-                                                notifications.</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="email02">
-                                            <label class="custom-control-label" for="email02">You're sent a direct
-                                                message</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="email03"
-                                                checked="">
-                                            <label class="custom-control-label" for="email03">Someone adds you as a
-                                                connection</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-md-3" for="npass">When To Escalate Emails</label>
-                                    <div class="col-md-9">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="email04">
-                                            <label class="custom-control-label" for="email04"> Upon new order.</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="email05">
-                                            <label class="custom-control-label" for="email05"> New membership
-                                                approval</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="email06"
-                                                checked="">
-                                            <label class="custom-control-label" for="email06"> Member
-                                                registration</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                            <form action="{{ route('upload-cv') }}" method="POST" id="formCv">
+                                @csrf
+                                <div class="custom-file mb-3">
+                                    <input type="file" class="custom-file-input" id="customFile" name="cv" required>
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                 </div>
+
+                                <button type="submit" class="btn btn-primary mr-2">Save</button>
                                 <button type="reset" class="btn iq-bg-danger">Cancel</button>
                             </form>
                         </div>
                     </div>
+                    @if (Auth::user()->cv != null)
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between">
+                                <div class="iq-header-title">
+                                    <h4 class="card-title">View CV</h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <embed src="{{ asset(Auth::user()->cv) }}" width="100%" height="800px"></embed>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="{{ asset('back/assets/js/customizer.js') }}"></script>
     <script src="{{ asset('back/assets/js/response.js') }}"></script>
     <script src="{{ asset('back/assets/js/chart-custom.js') }}"></script>
     <script
@@ -370,11 +331,8 @@
 
         window.initMap = initMap;
 
-        $('#formPersonal').submit(function(e) {
+        $('#formPersonal, #formChangePass, #formCv').submit(function(e) {
             e.preventDefault();
-            var tahun = $('#tahun').val();
-
-            $('#tahunForm').val(tahun);
 
             const url = $(this).attr("action");
             const formData = new FormData(this);
@@ -393,12 +351,15 @@
                     if (response.alert == '1') {
                         title = "Berhasil";
                         icon = "success";
+
+                        getresponseReload(icon, response.message, title);
                     } else {
                         title = "Error !";
                         icon = "error";
+
+                        getresponse(icon, response.message, title);
                     }
 
-                    getresponseReload(icon, response.message, title);
                 },
                 error: function(response) {
                     getresponse("error", response.message, "Error !");

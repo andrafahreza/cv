@@ -27,7 +27,7 @@ class AuthController extends Controller
 
         return back()->with([
             'alert' => 0,
-            'message' => 'Username Atau Password Salah'
+            'message' => 'Incorrect username or password'
         ]);
     }
 

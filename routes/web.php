@@ -21,5 +21,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('change-pass', function() { return abort(404); });
         Route::post('change-pass', [ProfileController::class, 'change_pass'])->name('change-pass');
+        Route::get('upload-cv', function() { return abort(404); });
+        Route::post('upload-cv', [ProfileController::class, 'upload_cv'])->name('upload-cv');
     });
 });
