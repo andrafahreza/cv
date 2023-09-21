@@ -9,7 +9,7 @@
     <meta name="description" content="Portofolio Mhd Andra Fahreza" />
     <meta name="keywords" content="vcard, resposnive, retina, resume, jquery, css3, bootstrap, Material CV, portfolio" />
     <meta name="author" content="andra" />
-    <link rel="shortcut icon" href="{{ asset('front/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset($user->photo) }}">
 
     <link rel="stylesheet" href="{{ asset('front/css/reset.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('front/css/bootstrap-grid.min.css') }}" type="text/css">
@@ -40,11 +40,11 @@
             <header id="site_header" class="header mobile-menu-hide">
                 <div class="header-content">
                     <div class="header-photo">
-                        <img src="{{ asset('front/img/main_photo.jpg') }}" alt="Mhd Andra Fahreza">
+                        <img src="{{ asset($user->photo) }}" alt="{{ $user->name }}">
                     </div>
                     <div class="header-titles">
-                        <h2>Mhd Andra Fahreza</h2>
-                        <h4>Programmer</h4>
+                        <h2>{{ $user->name }}</h2>
+                        <h4>{{ $user->job }}</h4>
                     </div>
                 </div>
 
@@ -83,14 +83,13 @@
 
                 <div class="social-links">
                     <ul>
-                        <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="{{ $user->linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="{{ $user->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                     </ul>
                 </div>
 
                 <div class="header-buttons">
-                    <a href="#" target="_blank" class="btn btn-primary">Download CV</a>
+                    <a href="{{ asset($user->cv) }}" download class="btn btn-primary">Download CV</a>
                 </div>
 
                 <div class="copyrights">© {{ date('Y') }} Mhd Andra Fahreza.</div>
@@ -120,14 +119,10 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="title-block">
-                                        <h2>Mhd Andra Fahreza</h2>
+                                        <h2>{{ $user->name }}</h2>
                                         <div class="owl-carousel text-rotation">
                                             <div class="item">
-                                                <div class="sp-subtitle">Web Designer</div>
-                                            </div>
-
-                                            <div class="item">
-                                                <div class="sp-subtitle">Frontend-developer</div>
+                                                <div class="sp-subtitle">{{ $user->job }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -148,39 +143,20 @@
                             <!-- Personal Information -->
                             <div class="row">
                                 <div class="col-xs-12 col-sm-7">
-                                    <p>Proin volutpat mauris ac pellentesque pharetra. Suspendisse congue elit vel odio
-                                        suscipit, sit amet tempor nisl imperdiet. Quisque ex justo, faucibus ut mi in,
-                                        condimentum finibus dolor. Aliquam vitae hendrerit dolor, eget imperdiet mauris.
-                                        Maecenas et ante id ipsum condimentum dictum et vel massa. Ut in imperdiet
-                                        dolor, vel consectetur dui.</p>
+                                    <p>{!! $user->about !!}</p>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-5">
                                     <div class="info-list">
                                         <ul>
                                             <li>
+                                                <span class="title">Date Of Birth</span>
+                                                <span class="value">{{ $user->birthday }}</span>
+                                            </li>
+
+                                            <li>
                                                 <span class="title">Age</span>
-                                                <span class="value">32</span>
-                                            </li>
-
-                                            <li>
-                                                <span class="title">Residence</span>
-                                                <span class="value">USA</span>
-                                            </li>
-
-                                            <li>
-                                                <span class="title">Address</span>
-                                                <span class="value">88 Some Street, Some Town</span>
-                                            </li>
-
-                                            <li>
-                                                <span class="title">e-mail</span>
-                                                <span class="value">email@example.com</span>
-                                            </li>
-
-                                            <li>
-                                                <span class="title">Phone</span>
-                                                <span class="value">+0123 123 456 789</span>
+                                                <span class="value">{{ $age }}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -277,7 +253,8 @@
                                         <!-- Testimonial 1 -->
                                         <div class="testimonial">
                                             <div class="img">
-                                                <img src="{{ asset('front/img/testimonials/testimonial-1.jpg') }}" alt="Alex Smith">
+                                                <img src="{{ asset('front/img/testimonials/testimonial-1.jpg') }}"
+                                                    alt="Alex Smith">
                                             </div>
                                             <div class="text">
                                                 <p>Vivamus at molestie dui, eu ornare orci. Curabitur vel egestas dolor.
@@ -298,7 +275,8 @@
                                         <!-- Testimonial 2 -->
                                         <div class="testimonial">
                                             <div class="img">
-                                                <img src="{{ asset('front/img/testimonials/testimonial-2.jpg') }}" alt="Alex Smith">
+                                                <img src="{{ asset('front/img/testimonials/testimonial-2.jpg') }}"
+                                                    alt="Alex Smith">
                                             </div>
                                             <div class="text">
                                                 <p>Vivamus at molestie dui, eu ornare orci. Curabitur vel egestas dolor.
@@ -319,7 +297,8 @@
                                         <!-- Testimonial 3 -->
                                         <div class="testimonial">
                                             <div class="img">
-                                                <img src="{{ asset('front/img/testimonials/testimonial-3.jpg') }}" alt="Alex Smith">
+                                                <img src="{{ asset('front/img/testimonials/testimonial-3.jpg') }}"
+                                                    alt="Alex Smith">
                                             </div>
                                             <div class="text">
                                                 <p>Vivamus at molestie dui, eu ornare orci. Curabitur vel egestas dolor.
@@ -358,43 +337,50 @@
 
                                         <div class="client-block">
                                             <a href="#" target="_blank" title="Logo">
-                                                <img src="{{ asset('front/img/clients/client-1.png') }}" alt="Logo">
+                                                <img src="{{ asset('front/img/clients/client-1.png') }}"
+                                                    alt="Logo">
                                             </a>
                                         </div>
 
                                         <div class="client-block">
                                             <a href="#" target="_blank" title="Logo">
-                                                <img src="{{ asset('front/img/clients/client-2.png') }}" alt="Logo">
+                                                <img src="{{ asset('front/img/clients/client-2.png') }}"
+                                                    alt="Logo">
                                             </a>
                                         </div>
 
                                         <div class="client-block">
                                             <a href="#" target="_blank" title="Logo">
-                                                <img src="{{ asset('front/img/clients/client-3.png') }}" alt="Logo">
+                                                <img src="{{ asset('front/img/clients/client-3.png') }}"
+                                                    alt="Logo">
                                             </a>
                                         </div>
 
                                         <div class="client-block">
                                             <a href="#" target="_blank" title="Logo">
-                                                <img src="{{ asset('front/img/clients/client-4.png') }}" alt="Logo">
+                                                <img src="{{ asset('front/img/clients/client-4.png') }}"
+                                                    alt="Logo">
                                             </a>
                                         </div>
 
                                         <div class="client-block">
                                             <a href="#" target="_blank" title="Logo">
-                                                <img src="{{ asset('front/img/clients/client-5.png') }}" alt="Logo">
+                                                <img src="{{ asset('front/img/clients/client-5.png') }}"
+                                                    alt="Logo">
                                             </a>
                                         </div>
 
                                         <div class="client-block">
                                             <a href="#" target="_blank" title="Logo">
-                                                <img src="{{ asset('front/img/clients/client-6.png') }}" alt="Logo">
+                                                <img src="{{ asset('front/img/clients/client-6.png') }}"
+                                                    alt="Logo">
                                             </a>
                                         </div>
 
                                         <div class="client-block">
                                             <a href="#" target="_blank" title="Logo">
-                                                <img src="{{ asset('front/img/clients/client-7.png') }}" alt="Logo">
+                                                <img src="{{ asset('front/img/clients/client-7.png') }}"
+                                                    alt="Logo">
                                             </a>
                                         </div>
 
@@ -859,8 +845,8 @@
                                             <figure class="item lbaudio"
                                                 data-groups='["category_all", "category_soundcloud"]'>
                                                 <div class="portfolio-item-img">
-                                                    <img src="{{ asset('front/img/portfolio/1.jpg') }}" alt="SoundCloud Audio"
-                                                        title="" />
+                                                    <img src="{{ asset('front/img/portfolio/1.jpg') }}"
+                                                        alt="SoundCloud Audio" title="" />
                                                     <a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/221650664&#038;color=%23ff5500&#038;auto_play=false&#038;hide_related=false&#038;show_comments=true&#038;show_user=true&#038;show_reposts=false&#038;show_teaser=true&#038;visual=true"
                                                         class="lightbox mfp-iframe" title="SoundCloud Audio"></a>
                                                 </div>
@@ -873,8 +859,8 @@
                                             <figure class="item standard"
                                                 data-groups='["category_all", "category_detailed"]'>
                                                 <div class="portfolio-item-img">
-                                                    <img src="{{ asset('front/img/portfolio/2.jpg') }}" alt="Media Project 2"
-                                                        title="" />
+                                                    <img src="{{ asset('front/img/portfolio/2.jpg') }}"
+                                                        alt="Media Project 2" title="" />
                                                     <a href="portfolio-1.html" class="ajax-page-load"></a>
                                                 </div>
 
@@ -886,8 +872,8 @@
                                             <figure class="item lbvideo"
                                                 data-groups='["category_all", "category_vimeo-videos"]'>
                                                 <div class="portfolio-item-img">
-                                                    <img src="{{ asset('front/img/portfolio/3.jpg') }}" alt="Vimeo Video 1"
-                                                        title="" />
+                                                    <img src="{{ asset('front/img/portfolio/3.jpg') }}"
+                                                        alt="Vimeo Video 1" title="" />
                                                     <a href="https://player.vimeo.com/video/158284739"
                                                         class="lightbox mfp-iframe" title="Vimeo Video 1"></a>
                                                 </div>
@@ -900,8 +886,8 @@
                                             <figure class="item standard"
                                                 data-groups='["category_all", "category_detailed"]'>
                                                 <div class="portfolio-item-img">
-                                                    <img src="{{ asset('front/img/portfolio/4.jpg') }}" alt="Media Project 1"
-                                                        title="" />
+                                                    <img src="{{ asset('front/img/portfolio/4.jpg') }}"
+                                                        alt="Media Project 1" title="" />
                                                     <a href="portfolio-1.html" class="ajax-page-load"></a>
                                                 </div>
 
@@ -913,8 +899,8 @@
                                             <figure class="item lbimage"
                                                 data-groups='["category_all", "category_mockups"]'>
                                                 <div class="portfolio-item-img">
-                                                    <img src="{{ asset('front/img/portfolio/5.jpg') }}" alt="Mockup Design 1"
-                                                        title="" />
+                                                    <img src="{{ asset('front/img/portfolio/5.jpg') }}"
+                                                        alt="Mockup Design 1" title="" />
                                                     <a class="lightbox" title="Mockup Design 1"
                                                         href="img/portfolio/full/5.jpg"></a>
                                                 </div>
@@ -927,8 +913,8 @@
                                             <figure class="item lbvideo"
                                                 data-groups='["category_all", "category_youtube-videos"]'>
                                                 <div class="portfolio-item-img">
-                                                    <img src="{{ asset('front/img/portfolio/6.jpg') }}" alt="YouTube Video 1"
-                                                        title="" />
+                                                    <img src="{{ asset('front/img/portfolio/6.jpg') }}"
+                                                        alt="YouTube Video 1" title="" />
                                                     <a href="https://www.youtube.com/embed/bg0gv2YpIok"
                                                         class="lightbox mfp-iframe" title="YouTube Video 1"></a>
                                                 </div>
@@ -958,21 +944,21 @@
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="lm-info-block gray-default">
                                         <i class="lnr lnr-map-marker"></i>
-                                        <h4>San Francisco</h4>
+                                        <h4>{{ $user->address }}</h4>
                                         <span class="lm-info-block-value"></span>
                                         <span class="lm-info-block-text"></span>
                                     </div>
 
                                     <div class="lm-info-block gray-default">
                                         <i class="lnr lnr-phone-handset"></i>
-                                        <h4>415-832-2000</h4>
+                                        <h4>{{ $user->phone }}</h4>
                                         <span class="lm-info-block-value"></span>
                                         <span class="lm-info-block-text"></span>
                                     </div>
 
                                     <div class="lm-info-block gray-default">
                                         <i class="lnr lnr-envelope"></i>
-                                        <h4>alex@example.com</h4>
+                                        <h4>{{ $user->email }}</h4>
                                         <span class="lm-info-block-value"></span>
                                         <span class="lm-info-block-text"></span>
                                     </div>
@@ -1073,11 +1059,51 @@
     <script src='{{ asset('front/js/masonry.pkgd.min.js') }}'></script>
     <script src='{{ asset('front/js/owl.carousel.min.js') }}'></script>
     <script src="{{ asset('front/js/jquery.magnific-popup.min.js') }}"></script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu1GRqaYw_NmXmAnPyDsEOs2fdh5zYiPw&callback=Function.prototype"></script>
-    <script src="{{ asset('front/js/jquery.googlemap.js') }}"></script>
     <script src="{{ asset('front/js/validator.js') }}"></script>
     <script src="{{ asset('front/js/main.js') }}"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu1GRqaYw_NmXmAnPyDsEOs2fdh5zYiPw&libraries=drawing,places,geometry&callback=initMap"
+    async></script>
+    {{-- <script src="{{ asset('front/js/jquery.googlemap.js') }}"></script> --}}
+
+
+    <script>
+        var map;
+        var marker;
+        var center;
+
+        function initMap() {
+            var lat = "{{ $user->lat }}";
+            var lng = "{{ $user->lng }}";
+            if (lat != "" && lng != "") {
+                center = {
+                    lat: parseFloat(lat),
+                    lng: parseFloat(lng)
+                };
+            } else {
+                center = {
+                    lat: 3.597031,
+                    lng: 98.678513
+                };
+            }
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: center,
+                zoom: 17,
+            });
+
+            // marker saat load pertama kali
+            if (lat != "" && lng != "") {
+                marker = new google.maps.Marker({
+                    position: center,
+                    map: map,
+                    title: "Location"
+                });
+            }
+        }
+
+        window.initMap = initMap;
+    </script>
 </body>
 
 </html>

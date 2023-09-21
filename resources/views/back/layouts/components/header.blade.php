@@ -219,7 +219,7 @@
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="mb-0">
-                                                            <a href="{{ Auth::user()->facebook }}" target="_blank"></a>
+                                                            <a href="{{ Auth::user()->facebook }}" target="_blank">Open</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -229,7 +229,7 @@
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="mb-0">
-                                                            <a href="{{ Auth::user()->linkedin }}" target="_blank"></a>
+                                                            <a href="{{ Auth::user()->linkedin }}" target="_blank">Open</a>
                                                         </p>
                                                     </div>
                                                 </div>
