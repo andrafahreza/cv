@@ -15,7 +15,7 @@
                         <a href="{{ route('home') }}" class="@if ($page == 'dashboard') active @endif">
                             <i class="las la-home iq-arrow-left"></i><span>Dashboard</span>
                         </a>
-                        <a href="#" class="@if ($page == 'education') active @endif">
+                        <a href="{{ route('education') }}" class="@if ($page == 'education') active @endif">
                             <i class="las la-graduation-cap"></i><span>Education</span>
                         </a>
                     </div>

@@ -511,39 +511,23 @@
 
                             <div class="row">
                                 <div class="col-xs-12 col-sm-7">
-
                                     <div class="block-title">
                                         <h3>Education</h3>
                                     </div>
-
                                     <div class="timeline timeline-second-style clearfix">
-                                        <div class="timeline-item clearfix">
-                                            <div class="left-part">
-                                                <h5 class="item-period">2008</h5>
-                                                <span class="item-company">University of Studies</span>
+                                        @foreach ($education as $edu)
+                                            <div class="timeline-item clearfix">
+                                                <div class="left-part">
+                                                    <h5 class="item-period">{{ $edu->year }}</h5>
+                                                    <span class="item-company">{{ $edu->study }}</span>
+                                                </div>
+                                                <div class="divider"></div>
+                                                <div class="right-part">
+                                                    <h4 class="item-title">{{ $edu->major }}</h4>
+                                                    <p>{!! $edu->note !!}</p>
+                                                </div>
                                             </div>
-                                            <div class="divider"></div>
-                                            <div class="right-part">
-                                                <h4 class="item-title">Frontend Development</h4>
-                                                <p>Maecenas finibus nec sem ut imperdiet. Ut tincidunt est ac dolor
-                                                    aliquam sodales. Phasellus sed mauris hendrerit, laoreet sem in,
-                                                    lobortis ante.</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="timeline-item clearfix">
-                                            <div class="left-part">
-                                                <h5 class="item-period">2007</h5>
-                                                <span class="item-company">University of Studies</span>
-                                            </div>
-                                            <div class="divider"></div>
-                                            <div class="right-part">
-                                                <h4 class="item-title">Graphic Design</h4>
-                                                <p>Aliquam tincidunt malesuada tortor vitae iaculis. In eu turpis
-                                                    iaculis, feugiat risus quis, aliquet urna. Quisque fringilla mollis
-                                                    risus, eu pulvinar dolor.</p>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
 
                                     <div class="white-space-50"></div>
@@ -1062,9 +1046,8 @@
     <script src="{{ asset('front/js/validator.js') }}"></script>
     <script src="{{ asset('front/js/main.js') }}"></script>
     <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu1GRqaYw_NmXmAnPyDsEOs2fdh5zYiPw&libraries=drawing,places,geometry&callback=initMap"
-    async></script>
-    {{-- <script src="{{ asset('front/js/jquery.googlemap.js') }}"></script> --}}
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu1GRqaYw_NmXmAnPyDsEOs2fdh5zYiPw&libraries=drawing,places,geometry&callback=initMap"
+        async></script>
 
 
     <script>
