@@ -85,7 +85,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class=" row align-items-center">
+                                <div class="row align-items-center">
                                     <div class="form-group col-sm-6">
                                         <label for="name">Name</label>
                                         <input type="text" name="name" class="form-control" id="name"

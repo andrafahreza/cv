@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Ramsey\Uuid\Uuid;
 
 class ProfileController extends Controller
 {
@@ -123,7 +124,7 @@ class ProfileController extends Controller
             $data = User::find(Auth::user()->id);
 
             $file = $request->file('cv');
-            $filename = rand(10000, 99999).date('YmdHi').$file->getClientOriginalName();
+            $filename = Uuid::uuid4()->getHex().date('YmdHi').$file->getClientOriginalExtension();
             $file->move(public_path('front/cv/'), $filename);
 
             $oldFile = public_path($data->cv);

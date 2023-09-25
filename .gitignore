@@ -5,6 +5,7 @@
 /public/storage
 /public/back/assets/images/user
 /public/front/cv
+/public/front/clients
 /storage/*.key
 /vendor
 .env

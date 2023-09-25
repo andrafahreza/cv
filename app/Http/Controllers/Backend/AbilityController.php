@@ -3,27 +3,34 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Education;
+use App\Models\Ability;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
 use Yajra\DataTables\Facades\DataTables;
 
-class EducationController extends Controller
+class AbilityController extends Controller
 {
-    public function list_education(Request $request)
+    public function index()
     {
-        $data = Education::latest()->get();
+        return view('back.pages.ability.index', [
+            "page" => 'ability'
+        ]);
+    }
+
+    public function list_ability(Request $request)
+    {
+        $data = Ability::latest()->get();
 
         return DataTables::of($data)
             ->addIndexColumn()
             ->editColumn("action", function($data) {
-                $urlEdit = route("show-education", ["id" => $data->id]);
-                $urlDelete = route("delete-education", ["id" => $data->id]);
-                $html = '<button class="btn bg-info-light btn-rounded btn-sm my-0" onclick="editData(\''.$urlEdit.'\')">
+                $urlEdit = route("show-ability", ["id" => $data->id]);
+                $urlDelete = route("delete-ability", ["id" => $data->id]);
+                $html = '<button class="btn bg-info-light btn-rounded btn-sm my-0" onclick="editAbility(\''.$urlEdit.'\')">
                     Edit
                 </button>
-                <button class="btn bg-danger-light btn-rounded btn-sm my-0" onclick="deleteData(\''.$urlDelete.'\')">
+                <button class="btn bg-danger-light btn-rounded btn-sm my-0" onclick="deleteAbility(\''.$urlDelete.'\')">
                     Delete
                 </button>';
 
@@ -33,7 +40,7 @@ class EducationController extends Controller
             ->make(true);
     }
 
-    public function save_education(Request $request, $id = null)
+    public function save_ability(Request $request, $id = null)
     {
         DB::beginTransaction();
 
@@ -44,15 +51,14 @@ class EducationController extends Controller
 
             $set = [
                 "id" => $id,
-                "year" => $request->year,
-                "study" => $request->study,
-                "major" => $request->major,
+                "icon" => $request->icon,
+                "title" => $request->title,
                 "note" => $request->note,
             ];
 
-            $detect = Education::find($id);
+            $detect = Ability::find($id);
             if (!$detect) {
-                $detect = Education::create($set);
+                $detect = Ability::create($set);
                 if (!$detect->save()) {
                     throw new \Exception("Failed to save data");
                 }
@@ -81,9 +87,9 @@ class EducationController extends Controller
         }
     }
 
-    public function show_education($id = null)
+    public function show_ability($id = null)
     {
-        $data = Education::find($id);
+        $data = Ability::find($id);
         if ($data == null || $id == null) {
             abort(404);
         }
@@ -102,9 +108,9 @@ class EducationController extends Controller
         }
     }
 
-    public function delete_education($id = null)
+    public function delete_ability($id = null)
     {
-        $data = Education::find($id);
+        $data = Ability::find($id);
         if ($data == null || $id == null) {
             abort(404);
         }
@@ -126,6 +132,4 @@ class EducationController extends Controller
             ]);
         }
     }
-
-
 }

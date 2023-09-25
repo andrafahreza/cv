@@ -15,8 +15,18 @@
                         <a href="{{ route('home') }}" class="@if ($page == 'dashboard') active @endif">
                             <i class="las la-home iq-arrow-left"></i><span>Dashboard</span>
                         </a>
-                        <a href="{{ route('education') }}" class="@if ($page == 'education') active @endif">
-                            <i class="las la-graduation-cap"></i><span>Education</span>
+                        <a href="{{ route('ability') }}" class="@if ($page == 'ability') active @endif">
+                            <i class="las la-chalkboard-teacher iq-arrow-left"></i><span>Ability</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="d-flex align-items-center">
+                        <a href="{{ route('resume') }}" class="@if ($page == 'resume') active @endif">
+                            <i class="las la-graduation-cap"></i><span>Resume</span>
+                        </a>
+                        <a href="#" class="@if ($page == 'experience') active @endif">
+                            <i class="las la-industry"></i><span>Experience</span>
                         </a>
                     </div>
                 </li>
