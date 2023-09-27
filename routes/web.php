@@ -4,9 +4,12 @@ use App\Http\Controllers\Backend\AbilityController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\ClientsController;
 use App\Http\Controllers\Backend\EducationController;
+use App\Http\Controllers\Backend\ExperienceController;
 use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Backend\InterestController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\ResumeController;
+use App\Http\Controllers\Backend\SkillsController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +51,27 @@ Route::middleware(['auth'])->group(function () {
             Route::post('list-education', [EducationController::class, 'list_education'])->name('list-education');
             Route::get('show-education/{id?}', [EducationController::class, 'show_education'])->name('show-education');
             Route::get('delete-education/{id?}', [EducationController::class, 'delete_education'])->name('delete-education');
+        });
+
+        Route::group(["prefix" => "experience"], function () {
+            Route::post('save-experience/{id?}', [ExperienceController::class, 'save_experience'])->name('save-experience');
+            Route::post('list-experience', [ExperienceController::class, 'list_experience'])->name('list-experience');
+            Route::get('show-experience/{id?}', [ExperienceController::class, 'show_experience'])->name('show-experience');
+            Route::get('delete-experience/{id?}', [ExperienceController::class, 'delete_experience'])->name('delete-experience');
+        });
+
+        Route::group(["prefix" => "skills"], function () {
+            Route::post('save-skills/{id?}', [SkillsController::class, 'save_skills'])->name('save-skills');
+            Route::post('list-skills', [SkillsController::class, 'list_skills'])->name('list-skills');
+            Route::get('show-skills/{id?}', [SkillsController::class, 'show_skills'])->name('show-skills');
+            Route::get('delete-skills/{id?}', [SkillsController::class, 'delete_skills'])->name('delete-skills');
+        });
+
+        Route::group(["prefix" => "interest"], function () {
+            Route::post('save-interest/{id?}', [InterestController::class, 'save_interest'])->name('save-interest');
+            Route::post('list-interest', [InterestController::class, 'list_interest'])->name('list-interest');
+            Route::get('show-interest/{id?}', [InterestController::class, 'show_interest'])->name('show-interest');
+            Route::get('delete-interest/{id?}', [InterestController::class, 'delete_interest'])->name('delete-interest');
         });
 
     });

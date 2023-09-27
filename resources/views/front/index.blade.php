@@ -260,47 +260,19 @@
                                     </div>
 
                                     <div class="timeline timeline-second-style clearfix">
-                                        <div class="timeline-item clearfix">
-                                            <div class="left-part">
-                                                <h5 class="item-period">2016 - Current</h5>
-                                                <span class="item-company">Google</span>
+                                        @foreach ($experience as $exp)
+                                            <div class="timeline-item clearfix">
+                                                <div class="left-part">
+                                                    <h5 class="item-period">{{ $exp->start }} - {{ $exp->until }}</h5>
+                                                    <span class="item-company">{{ $exp->company }}</span>
+                                                </div>
+                                                <div class="divider"></div>
+                                                <div class="right-part">
+                                                    <h4 class="item-title">{{ $exp->job }}</h4>
+                                                    <p style="text-align: justify">{!! json_decode(str_replace('\r\n', '<br>', $exp->note)) !!}</p>
+                                                </div>
                                             </div>
-                                            <div class="divider"></div>
-                                            <div class="right-part">
-                                                <h4 class="item-title">Lead Ui/Ux Designer</h4>
-                                                <p>Praesent dignissim sollicitudin justo, sed elementum quam lacinia
-                                                    quis. Phasellus eleifend tristique posuere. Sed vitae dui nec magna.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="timeline-item clearfix">
-                                            <div class="left-part">
-                                                <h5 class="item-period">2013 - 2016</h5>
-                                                <span class="item-company">Adobe</span>
-                                            </div>
-                                            <div class="divider"></div>
-                                            <div class="right-part">
-                                                <h4 class="item-title">Senior Ui/Ux Designer</h4>
-                                                <p>Maecenas tempus faucibus rutrum. Duis eu aliquam urna. Proin vitae
-                                                    nulla tristique, ornare felis id, congue libero. Nam volutpat
-                                                    euismod quam.</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="timeline-item clearfix">
-                                            <div class="left-part">
-                                                <h5 class="item-period">2011 - 2013</h5>
-                                                <span class="item-company">Google</span>
-                                            </div>
-                                            <div class="divider"></div>
-                                            <div class="right-part">
-                                                <h4 class="item-title">Junior Ui/Ux Designer</h4>
-                                                <p>Duis mollis nunc quis quam viverra venenatis. Nulla nulla arcu,
-                                                    congue vitae nunc ac, sodales ultricies diam. Nullam justo leo,
-                                                    tincidunt sit amet.</p>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
 
                                 </div>
@@ -309,130 +281,33 @@
                                 <div class="col-xs-12 col-sm-5">
                                     <!-- Design Skills -->
                                     <div class="block-title">
-                                        <h3>Design <span>Skills</span></h3>
+                                        <h3>Coding <span>Skills</span></h3>
                                     </div>
 
                                     <div class="skills-info skills-second-style">
-                                        <!-- Skill 1 -->
-                                        <div class="skill clearfix">
-                                            <h4>Web Design</h4>
-                                            <div class="skill-value">95%</div>
-                                        </div>
-                                        <div class="skill-container skill-1">
-                                            <div class="skill-percentage"></div>
-                                        </div>
-                                        <!-- End of Skill 1 -->
-
-                                        <!-- Skill 2 -->
-                                        <div class="skill clearfix">
-                                            <h4>Print Design</h4>
-                                            <div class="skill-value">65%</div>
-                                        </div>
-                                        <div class="skill-container skill-2">
-                                            <div class="skill-percentage"></div>
-                                        </div>
-                                        <!-- End of Skill 2 -->
-
-                                        <!-- Skill 3 -->
-                                        <div class="skill clearfix">
-                                            <h4>Logo Design</h4>
-                                            <div class="skill-value">80%</div>
-                                        </div>
-                                        <div class="skill-container skill-3">
-                                            <div class="skill-percentage"></div>
-                                        </div>
-                                        <!-- End of Skill 3 -->
-
-                                        <!-- Skill 4 -->
-                                        <div class="skill clearfix">
-                                            <h4>Graphic Design</h4>
-                                            <div class="skill-value">90%</div>
-                                        </div>
-                                        <div class="skill-container skill-4">
-                                            <div class="skill-percentage"></div>
-                                        </div>
-                                        <!-- End of Skill 4 -->
-
+                                        @foreach ($skills as $skill)
+                                            <div class="skill clearfix">
+                                                <h4>{{ $skill->skill }}</h4>
+                                                <div class="skill-value">{{ $skill->percentage }}%</div>
+                                            </div>
+                                            <div class="skill-container">
+                                                <div class="skill-percentage" style="width: {{ $skill->percentage }}%"></div>
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <!-- End of Design Skills -->
 
                                     <div class="white-space-10"></div>
 
-                                    <!-- Coding Skills -->
-                                    <div class="block-title">
-                                        <h3>Coding <span>Skills</span></h3>
-                                    </div>
-
-                                    <div class="skills-info skills-second-style">
-                                        <!-- Skill 5 -->
-                                        <div class="skill clearfix">
-                                            <h4>JavaScript</h4>
-                                            <div class="skill-value">95%</div>
-                                        </div>
-                                        <div class="skill-container skill-5">
-                                            <div class="skill-percentage"></div>
-                                        </div>
-                                        <!-- End of Skill 5 -->
-
-                                        <!-- Skill 6 -->
-                                        <div class="skill clearfix">
-                                            <h4>PHP</h4>
-                                            <div class="skill-value">85%</div>
-                                        </div>
-                                        <div class="skill-container skill-6">
-                                            <div class="skill-percentage"></div>
-                                        </div>
-                                        <!-- End of Skill 6 -->
-
-                                        <!-- Skill 7 -->
-                                        <div class="skill clearfix">
-                                            <h4>HTML/CSS</h4>
-                                            <div class="skill-value">100%</div>
-                                        </div>
-                                        <div class="skill-container skill-7">
-                                            <div class="skill-percentage"></div>
-                                        </div>
-                                        <!-- End of Skill 7 -->
-
-                                        <!-- Skill 8 -->
-                                        <div class="skill clearfix">
-                                            <h4>Smarty/Twig</h4>
-                                            <div class="skill-value">75%</div>
-                                        </div>
-                                        <div class="skill-container skill-8">
-                                            <div class="skill-percentage"></div>
-                                        </div>
-                                        <!-- End of Skill 8 -->
-
-                                        <!-- Skill 9 -->
-                                        <div class="skill clearfix">
-                                            <h4>Perl</h4>
-                                            <div class="skill-value">90%</div>
-                                        </div>
-                                        <div class="skill-container skill-9">
-                                            <div class="skill-percentage"></div>
-                                        </div>
-                                        <!-- End of Skill 9 -->
-                                    </div>
-                                    <!-- End of Coding Skills -->
-
-                                    <div class="white-space-10"></div>
-
                                     <!-- Knowledges -->
                                     <div class="block-title">
-                                        <h3>Knowledges</h3>
+                                        <h3>Interest</h3>
                                     </div>
 
                                     <ul class="knowledges">
-                                        <li>Marketing</li>
-                                        <li>Print</li>
-                                        <li>Digital Design</li>
-                                        <li>Social Media</li>
-                                        <li>Time Management</li>
-                                        <li>Communication</li>
-                                        <li>Problem-Solving</li>
-                                        <li>Social Networking</li>
-                                        <li>Flexibility</li>
+                                        @foreach ($interest as $inter)
+                                            <li>{{ $inter->interest }}</li>
+                                        @endforeach
                                     </ul>
                                     <!-- End of Knowledges -->
                                 </div>

@@ -25,8 +25,8 @@
                         <a href="{{ route('resume') }}" class="@if ($page == 'resume') active @endif">
                             <i class="las la-graduation-cap"></i><span>Resume</span>
                         </a>
-                        <a href="#" class="@if ($page == 'experience') active @endif">
-                            <i class="las la-industry"></i><span>Experience</span>
+                        <a href="#" class="@if ($page == 'certificate') active @endif">
+                            <i class="las la-certificate"></i><span>Certificate</span>
                         </a>
                     </div>
                 </li>

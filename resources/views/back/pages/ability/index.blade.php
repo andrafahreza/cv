@@ -322,7 +322,7 @@
                         timer: 2000,
                         showConfirmButton: false,
                         showCancelButton: false,
-                        onBeforeOpen: () => {
+                        willOpen: () => {
                             Swal.showLoading()
                         }
                     }).then((result) => {
@@ -481,7 +481,7 @@
                         timer: 2000,
                         showConfirmButton: false,
                         showCancelButton: false,
-                        onBeforeOpen: () => {
+                        willOpen: () => {
                             Swal.showLoading()
                         }
                     }).then((result) => {
