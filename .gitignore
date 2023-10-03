@@ -6,6 +6,7 @@
 /public/back/assets/images/user
 /public/front/cv
 /public/front/clients
+/public/front/certificate
 /storage/*.key
 /vendor
 .env
