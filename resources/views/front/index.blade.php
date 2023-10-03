@@ -213,7 +213,7 @@
                                         @foreach ($clients as $client)
                                             <div class="client-block">
                                                 <a href="#" title="{{ $client->company }}">
-                                                    <img src="{{ asset($client->photo) }}" alt="{{ $client->company }}" width="240" height="200">
+                                                    <img src="{{ asset($client->photo) }}" alt="{{ $client->company }}" width="200" height="150">
                                                 </a>
                                             </div>
                                         @endforeach
@@ -326,56 +326,29 @@
                             </div>
 
                             <div class="row">
-                                <!-- Certificate 1 -->
-                                <div class="col-xs-12 col-sm-6">
-                                    <div class="certificate-item clearfix">
-                                        <div class="certi-logo">
-                                            <img src="img/clients/client-1.png" alt="logo">
-                                        </div>
+                                @foreach ($certificates as $certificate)
+                                    <div class="col-xs-12 col-sm-6">
+                                        <a href="{{ asset($certificate->file) }}" target="_blank">
+                                            <div class="certificate-item clearfix">
+                                                <div class="certi-logo">
+                                                    <img src="{{ asset($certificate->logo) }}" alt="logo">
+                                                </div>
 
-                                        <div class="certi-content">
-                                            <div class="certi-title">
-                                                <h4>Psyhology of Intertnation Design</h4>
+                                                <div class="certi-content">
+                                                    <div class="certi-title">
+                                                        <h4>{{ $certificate->title }}</h4>
+                                                    </div>
+                                                    <div class="certi-date">
+                                                        <span>{{ date('d-m-Y', strtotime($certificate->date)) }}</span>
+                                                    </div>
+                                                    <div class="certi-company">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="certi-id">
-                                                <span>Membership ID: XXXX</span>
-                                            </div>
-                                            <div class="certi-date">
-                                                <span>19 April 2018</span>
-                                            </div>
-                                            <div class="certi-company">
-                                                <span></span>
-                                            </div>
-                                        </div>
+                                        </a>
                                     </div>
-                                </div>
-                                <!-- End of Certificate 1 -->
-
-                                <!-- Certificate 2 -->
-                                <div class="col-xs-12 col-sm-6">
-                                    <div class="certificate-item clearfix">
-                                        <div class="certi-logo">
-                                            <img src="img/clients/client-1.png" alt="logo">
-                                        </div>
-
-                                        <div class="certi-content">
-                                            <div class="certi-title">
-                                                <h4>Psyhology of Intertnation Design</h4>
-                                            </div>
-                                            <div class="certi-id">
-                                                <span>Membership ID: XXXX</span>
-                                            </div>
-                                            <div class="certi-date">
-                                                <span>19 April 2018</span>
-                                            </div>
-                                            <div class="certi-company">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End of Certificate 2 -->
-
+                                @endforeach
                             </div>
                             <!-- End of Certificates -->
                         </div>

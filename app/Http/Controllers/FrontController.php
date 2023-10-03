@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ability;
+use App\Models\Certificate;
 use App\Models\Clients;
 use App\Models\Education;
 use App\Models\Experience;
@@ -23,6 +24,7 @@ class FrontController extends Controller
         $experience = Experience::orderBy('start', 'desc')->get();
         $skills = Skills::get();
         $interest = Interest::get();
+        $certificates = Certificate::get();
 
         return view('front.index', [
             "user" => $user,
@@ -32,7 +34,8 @@ class FrontController extends Controller
             "clients" => $clients,
             "experience" => $experience,
             "skills" => $skills,
-            "interest" => $interest
+            "interest" => $interest,
+            "certificates" => $certificates,
         ]);
     }
 }

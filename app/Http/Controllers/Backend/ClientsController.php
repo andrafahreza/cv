@@ -64,7 +64,7 @@ class ClientsController extends Controller
 
             if ($request->file('photo') != null) {
                 $file = $request->file('photo');
-                $filename = Uuid::uuid4()->getHex().date('YmdHi').$file->getClientOriginalExtension();
+                $filename = Uuid::uuid4()->getHex().date('YmdHi').".".$file->getClientOriginalExtension();
                 $file->move(public_path('front/clients/'), $filename);
 
                 $set['photo'] = "front/clients/".$filename;

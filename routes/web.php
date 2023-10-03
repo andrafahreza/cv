@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AbilityController;
 use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\CertificateController;
 use App\Http\Controllers\Backend\ClientsController;
 use App\Http\Controllers\Backend\EducationController;
 use App\Http\Controllers\Backend\ExperienceController;
@@ -74,5 +75,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('delete-interest/{id?}', [InterestController::class, 'delete_interest'])->name('delete-interest');
         });
 
+    });
+
+    Route::group(["prefix" => "certificate"], function () {
+        Route::get('/', [CertificateController::class, 'index'])->name('certificate');
+        Route::post('save-certificate/{id?}', [CertificateController::class, 'save_certificate'])->name('save-certificate');
+        Route::post('list-certificate', [CertificateController::class, 'list_certificate'])->name('list-certificate');
+        Route::get('delete-certificate/{id?}', [CertificateController::class, 'delete_certificate'])->name('delete-certificate');
     });
 });

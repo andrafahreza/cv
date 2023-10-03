@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
             if ($request->file('photo')) {
                 $file = $request->file('photo');
-                $filename = rand(10000, 99999).date('YmdHi').$file->getClientOriginalName();
+                $filename = rand(10000, 99999).date('YmdHi').".".$file->getClientOriginalName();
                 $file->move(public_path('back/assets/images/user/'), $filename);
 
                 $oldPhoto = public_path($data->photo);
@@ -124,7 +124,7 @@ class ProfileController extends Controller
             $data = User::find(Auth::user()->id);
 
             $file = $request->file('cv');
-            $filename = Uuid::uuid4()->getHex().date('YmdHi').$file->getClientOriginalExtension();
+            $filename = Uuid::uuid4()->getHex().date('YmdHi').".".$file->getClientOriginalExtension();
             $file->move(public_path('front/cv/'), $filename);
 
             $oldFile = public_path($data->cv);
