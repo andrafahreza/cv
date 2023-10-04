@@ -7,6 +7,7 @@
 /public/front/cv
 /public/front/clients
 /public/front/certificate
+/public/front/portfolio
 /storage/*.key
 /vendor
 .env

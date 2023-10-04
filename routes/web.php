@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\EducationController;
 use App\Http\Controllers\Backend\ExperienceController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\InterestController;
+use App\Http\Controllers\Backend\PortfolioController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\ResumeController;
 use App\Http\Controllers\Backend\SkillsController;
@@ -82,5 +83,21 @@ Route::middleware(['auth'])->group(function () {
         Route::post('save-certificate/{id?}', [CertificateController::class, 'save_certificate'])->name('save-certificate');
         Route::post('list-certificate', [CertificateController::class, 'list_certificate'])->name('list-certificate');
         Route::get('delete-certificate/{id?}', [CertificateController::class, 'delete_certificate'])->name('delete-certificate');
+    });
+
+    Route::group(["prefix" => "portfolio"], function () {
+        Route::get('/', [PortfolioController::class, 'index'])->name('portfolio');
+        Route::post('save-portfolio/{id?}', [PortfolioController::class, 'save_portfolio'])->name('save-portfolio');
+        Route::post('list-portfolio', [PortfolioController::class, 'list_portfolio'])->name('list-portfolio');
+        Route::get('show-portfolio/{id?}', [PortfolioController::class, 'show_portfolio'])->name('show-portfolio');
+        Route::get('delete-portfolio/{id?}', [PortfolioController::class, 'delete_portfolio'])->name('delete-portfolio');
+
+        Route::group(["prefix" => "category"], function () {
+            Route::get('search-category/{id?}', [PortfolioController::class, 'search_category'])->name('search-category');
+            Route::post('save-category/{id?}', [PortfolioController::class, 'save_category'])->name('save-category');
+            Route::post('list-category', [PortfolioController::class, 'list_category'])->name('list-category');
+            Route::get('show-category/{id?}', [PortfolioController::class, 'show_category'])->name('show-category');
+            Route::get('delete-category/{id?}', [PortfolioController::class, 'delete_category'])->name('delete-category');
+        });
     });
 });

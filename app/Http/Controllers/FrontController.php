@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ability;
+use App\Models\CategoryPortfolio;
 use App\Models\Certificate;
 use App\Models\Clients;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Interest;
+use App\Models\Portfolio;
 use App\Models\Skills;
 use App\Models\User;
 use Carbon\Carbon;
@@ -25,6 +27,8 @@ class FrontController extends Controller
         $skills = Skills::get();
         $interest = Interest::get();
         $certificates = Certificate::get();
+        $categories = CategoryPortfolio::get();
+        $portfolio = Portfolio::get();
 
         return view('front.index', [
             "user" => $user,
@@ -36,6 +40,8 @@ class FrontController extends Controller
             "skills" => $skills,
             "interest" => $interest,
             "certificates" => $certificates,
+            "categories" => $categories,
+            "portfolio" => $portfolio,
         ]);
     }
 }

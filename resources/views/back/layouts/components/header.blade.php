@@ -32,7 +32,7 @@
                 </li>
                 <li>
                     <div class="d-flex align-items-center">
-                        <a href="#" class="@if ($page == 'portfolio') active @endif">
+                        <a href="{{ route('portfolio') }}" class="@if ($page == 'portfolio') active @endif">
                             <i class="las la-briefcase"></i><span>Portfolio</span>
                         </a>
                         <a href="#" class="@if ($page == 'message') active @endif">
