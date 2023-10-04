@@ -6,6 +6,7 @@ use App\Models\Ability;
 use App\Models\CategoryPortfolio;
 use App\Models\Certificate;
 use App\Models\Clients;
+use App\Models\Contact;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Interest;
@@ -14,6 +15,8 @@ use App\Models\Skills;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class FrontController extends Controller
 {
@@ -43,5 +46,41 @@ class FrontController extends Controller
             "categories" => $categories,
             "portfolio" => $portfolio,
         ]);
+    }
+
+    public function send(Request $request)
+    {
+        DB::beginTransaction();
+
+        try {
+            $set = [
+                "id" => Uuid::uuid4()->getHex(),
+                "fullname" => $request->fullname,
+                "email" => $request->email,
+                "subject" => $request->subject,
+                "message" => $request->message,
+                "status" => false
+            ];
+
+            $data = Contact::create($set);
+            if (!$data->save()) {
+                throw new \Exception("Failed to send message");
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'alert' => 1,
+                'message' => "send message successfully"
+            ]);
+
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            $message = $th->getMessage();
+            return response()->json([
+                'alert' => 0,
+                'message' => "An error occurred in send message: $message"
+            ]);
+        }
     }
 }

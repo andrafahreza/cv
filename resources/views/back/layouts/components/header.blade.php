@@ -1,3 +1,9 @@
+@php
+    use App\Models\Contact;
+    $contacts = Contact::latest()->limit(4)->get();
+    $status = Contact::where('status', false)->get();
+@endphp
+
 <div class="iq-sidebar sidebar-double-icon">
     <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
         <a href="{{ route('home') }}" class="header-logo mx-auto">
@@ -35,7 +41,7 @@
                         <a href="{{ route('portfolio') }}" class="@if ($page == 'portfolio') active @endif">
                             <i class="las la-briefcase"></i><span>Portfolio</span>
                         </a>
-                        <a href="#" class="@if ($page == 'message') active @endif">
+                        <a href="{{ route('message') }}" class="@if ($page == 'message') active @endif">
                             <i class="las la-envelope"></i><span>Message</span>
                         </a>
                     </div>
@@ -76,7 +82,9 @@
                         <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="ri-notification-line"></i>
-                            <span class="bg-primary dots"></span>
+                            @if ($status->count() > 0)
+                                <span class="bg-primary dots"></span>
+                            @endif
                         </a>
                         <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <div class="card shadow-none m-0">
@@ -85,61 +93,29 @@
                                         <h5 class="mb-0">All Notifications</h5>
                                     </div>
                                     <div class="p-3">
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded-small"
-                                                        src="{{ asset('back/assets/images/user/01.jpg') }}" alt="">
+                                        @foreach ($contacts as $contact)
+                                            <a href="#" class="iq-sub-card">
+                                                <div class="media align-items-center">
+                                                    <div class="">
+                                                        <img class="avatar-40 rounded-small"
+                                                            src="{{ asset('back/assets/images/login/mail.png') }}" alt="">
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0">
+                                                            {{ $contact->email }}
+
+                                                            @if ($contact->status == false)
+                                                                <small class="badge badge-success float-right">New</small>
+                                                            @endif
+                                                        </h6>
+                                                        <p class="mb-0">{{ $contact->subject }}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0">
-                                                        Emma Watson Barry <small class="badge badge-success float-right">New</small>
-                                                    </h6>
-                                                    <p class="mb-0">95 MB</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded-small"
-                                                        src="{{ asset('back/assets/images/user/02.jpg') }}" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">New customer is join</h6>
-                                                    <p class="mb-0">Cyst Barry</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded-small"
-                                                        src="{{ asset('back/assets/images/user/03.jpg') }}" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Two customer is left</h6>
-                                                    <p class="mb-0">Cyst Barry</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded-small"
-                                                        src="{{ asset('back/assets/images/user/04.jpg') }}" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">New Mail from Fenny <small
-                                                            class="badge badge-success float-right">New</small>
-                                                    </h6>
-                                                    <p class="mb-0">Cyst Barry</p>
-                                                </div>
-                                            </div>
-                                        </a>
+                                            </a>
+                                        @endforeach
                                     </div>
                                     <a class="right-ic btn btn-primary btn-block position-relative p-2"
-                                        href="#" role="button">
+                                        href="{{ route('message') }}" role="button">
                                         <div class="dd-icon"><i class="las la-arrow-right mr-0"></i></div>
                                         View All
                                     </a>

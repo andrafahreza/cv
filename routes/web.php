@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AbilityController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\CertificateController;
 use App\Http\Controllers\Backend\ClientsController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\EducationController;
 use App\Http\Controllers\Backend\ExperienceController;
 use App\Http\Controllers\Backend\HomeController;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontController::class, "index"])->name("index");
 Route::get('login-adminku', [AuthController::class, "login"])->name("login-adminku")->middleware('guest');
 Route::post('login-adminku', [AuthController::class, "authenticate"])->name("loginkan-adminku");
+Route::post('send', [FrontController::class, "send"])->name("send-message");
 
 Route::middleware(['auth'])->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
@@ -99,5 +101,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('show-category/{id?}', [PortfolioController::class, 'show_category'])->name('show-category');
             Route::get('delete-category/{id?}', [PortfolioController::class, 'delete_category'])->name('delete-category');
         });
+    });
+
+    Route::group(["prefix" => "message"], function () {
+        Route::get('/', [ContactController::class, 'index'])->name('message');
     });
 });

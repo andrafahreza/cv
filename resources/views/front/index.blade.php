@@ -213,7 +213,8 @@
                                         @foreach ($clients as $client)
                                             <div class="client-block">
                                                 <a href="#" title="{{ $client->company }}">
-                                                    <img src="{{ asset($client->photo) }}" alt="{{ $client->company }}" width="200" height="150">
+                                                    <img src="{{ asset($client->photo) }}"
+                                                        alt="{{ $client->company }}" width="200" height="150">
                                                 </a>
                                             </div>
                                         @endforeach
@@ -263,7 +264,8 @@
                                         @foreach ($experience as $exp)
                                             <div class="timeline-item clearfix">
                                                 <div class="left-part">
-                                                    <h5 class="item-period">{{ $exp->start }} - {{ $exp->until }}</h5>
+                                                    <h5 class="item-period">{{ $exp->start }} - {{ $exp->until }}
+                                                    </h5>
                                                     <span class="item-company">{{ $exp->company }}</span>
                                                 </div>
                                                 <div class="divider"></div>
@@ -291,7 +293,8 @@
                                                 <div class="skill-value">{{ $skill->percentage }}%</div>
                                             </div>
                                             <div class="skill-container">
-                                                <div class="skill-percentage" style="width: {{ $skill->percentage }}%"></div>
+                                                <div class="skill-percentage"
+                                                    style="width: {{ $skill->percentage }}%"></div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -386,8 +389,10 @@
                                                 <figure class="item lbimage"
                                                     data-groups='["category_all", "{{ $porto->category->category }}"]'>
                                                     <div class="portfolio-item-img">
-                                                        <img src="{{ asset($porto->photo) }}" alt="{{ $porto->title }}" title="{{ $porto->title }}" />
-                                                        <a class="lightbox" title="{{ $porto->title }}" href="{{ $porto->photo }}"></a>
+                                                        <img src="{{ asset($porto->photo) }}"
+                                                            alt="{{ $porto->title }}" title="{{ $porto->title }}" />
+                                                        <a class="lightbox" title="{{ $porto->title }}"
+                                                            href="{{ $porto->photo }}"></a>
                                                     </div>
 
                                                     <i class="far fa-image"></i>
@@ -448,21 +453,34 @@
 
                                 <!-- Contact Form -->
                                 <div class="col-xs-12 col-sm-8">
+
                                     <div id="map" class="map"></div>
+
                                     <div class="block-title">
+                                        <div id="InfoBanner" class="response d-none">
+                                            <span class="reversed reversedRight" id="reverseSymbol">
+                                                <span id="symbol">
+                                                    &#9888;
+                                                </span>
+                                            </span>
+                                            <span class="reversed reversedLeft" id="responseMessage">Failed to send Message</span>
+                                        </div>
+
+                                        <br>
+
                                         <h3>How Can I <span>Help You?</span></h3>
                                     </div>
 
                                     <form id="contact_form" class="contact-form"
-                                        action="contact_form/contact_form.php" method="post">
-
+                                        action="{{ route('send-message') }}" method="post">
+                                        @csrf
                                         <div class="messages"></div>
 
                                         <div class="controls two-columns">
                                             <div class="fields clearfix">
                                                 <div class="left-column">
                                                     <div class="form-group form-group-with-icon">
-                                                        <input id="form_name" type="text" name="name"
+                                                        <input id="form_name" type="text" name="fullname"
                                                             class="form-control" placeholder="" required="required"
                                                             data-error="Name is required.">
                                                         <label>Full Name</label>
@@ -498,10 +516,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="g-recaptcha"
-                                                data-sitekey="6LdqmCAUAAAAAMMNEZvn6g4W5e0or2sZmAVpxVqI"
-                                                data-theme="dark"></div>
 
                                             <input type="submit" class="button btn-send" value="Send message">
                                         </div>
@@ -574,6 +588,62 @@
         }
 
         window.initMap = initMap;
+
+        $('#contact_form').submit(function(e) {
+            e.preventDefault();
+
+            const url = $(this).attr("action");
+            const formData = new FormData(this);
+
+            $.ajax({
+                type: "post",
+                url: url,
+                data: formData,
+                contentType: false,
+                processData: false,
+                dataType: "JSON",
+                success: function(response) {
+                    var title = "";
+                    var icon = "";
+
+                    if (response.alert == '1') {
+                        title = "Berhasil";
+                        icon = "success";
+
+                        $('.response').removeClass('d-none');
+                        $('#reverseSymbol').removeClass('reversed reversedRight');
+                        $('#reverseSymbol').addClass('reversedSuccess reversedSuccessRight');
+                        $('#symbol').html("&#9745;");
+                        $('#responseMessage').removeClass('reversed reversedLeft');
+                        $('#responseMessage').addClass('reversedSuccess reversedSuccessLeft');
+
+                        $('#contact_form')[0].reset();
+                    } else {
+                        $('.response').removeClass('d-none');
+                        $('#reverseSymbol').removeClass('reversedSuccess reversedSuccessRight');
+                        $('#reverseSymbol').addClass('reversed reversedRight');
+                        $('#symbol').html("&#9888;");
+                        $('#responseMessage').removeClass('reversedSuccess reversedSuccessLeft');
+                        $('#responseMessage').addClass('reversed reversedLeft');
+
+                        title = "Error !";
+                        icon = "error";
+                    }
+
+                    $('#responseMessage').html(response.message);
+                },
+                error: function(response) {
+                    $('.response').removeClass('d-none');
+                    $('#reverseSymbol').removeClass('reversedSuccess reversedSuccessRight');
+                    $('#reverseSymbol').addClass('reversed reversedRight');
+                    $('#symbol').html("&#9888;");
+                    $('#responseMessage').removeClass('reversedSuccess reversedSuccessLeft');
+                    $('#responseMessage').addClass('reversed reversedLeft');
+
+                    $('#responseMessage').html(response.message);
+                }
+            });
+        });
     </script>
 </body>
 
