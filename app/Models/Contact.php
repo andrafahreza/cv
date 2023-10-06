@@ -21,5 +21,7 @@ class Contact extends Model
         'subject',
         'message',
         'status',
+        'star',
+        'trash',
     ];
 }

@@ -105,5 +105,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(["prefix" => "message"], function () {
         Route::get('/', [ContactController::class, 'index'])->name('message');
+        Route::get('read/{id?}', [ContactController::class, 'read'])->name('read-message');
+        Route::get('star/{id?}', [ContactController::class, 'star'])->name('star-message');
+        Route::get('trash/{id?}', [ContactController::class, 'trash'])->name('trash-message');
     });
 });
