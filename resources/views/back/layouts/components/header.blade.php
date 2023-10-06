@@ -102,7 +102,7 @@
                                                     </div>
                                                     <div class="media-body ml-3">
                                                         <h6 class="mb-0">
-                                                            {{ $contact->email }}
+                                                            {{ $contact->fullname }}
 
                                                             @if ($contact->status == false)
                                                                 <small class="badge badge-success float-right">New</small>
